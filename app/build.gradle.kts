@@ -20,7 +20,7 @@ android {
         buildConfigField("String", "BASE_URL", "\"https://newsapi.org/v2/\"")
 
         //TODO 4: Masukkan nilai Field Api Key dibawah ini
-        buildConfigField("String", "API_KEY", "\"410ba3e7ec4a43de9ad8afdd39de4dac\"")
+        buildConfigField("String", "API_KEY", "\"Masukkan Disini\"")
     }
 
     buildTypes {
@@ -62,8 +62,4 @@ dependencies {
 
 
     //TODO 3: Implement library activity-ktx, retrofit, dan gson
-    implementation(libs.androidx.activity.ktx)
-    implementation(libs.squareup.retrofit)
-    implementation(libs.squareup.gson.converter)
-    implementation(libs.squareup.logging.interceptor)
 }

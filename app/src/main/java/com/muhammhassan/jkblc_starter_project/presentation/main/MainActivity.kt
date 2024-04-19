@@ -3,10 +3,8 @@ package com.muhammhassan.jkblc_starter_project.presentation.main
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.view.View
 import android.widget.SearchView
 import androidx.activity.enableEdgeToEdge
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -14,7 +12,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.muhammhassan.jkblc_starter_project.R
 import com.muhammhassan.jkblc_starter_project.databinding.ActivityMainBinding
-import com.muhammhassan.jkblc_starter_project.utils.RequestState
 
 class MainActivity : AppCompatActivity() {
     private val binding by lazy {
@@ -28,7 +25,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     // TODO 9 : Inisiasikan object view model
-    private val viewModel by viewModels<MainViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,7 +39,6 @@ class MainActivity : AppCompatActivity() {
         initRecyclerView()
         binding.searchBar.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
-                viewModel.getNews(query)
                 binding.searchBar.clearFocus()
                 return true
             }
@@ -56,25 +51,6 @@ class MainActivity : AppCompatActivity() {
         })
 
         //TODO 10 : Observe live data
-        viewModel.newsState.observe(this) {
-            when (it) {
-                is RequestState.Error -> {
-                    showSnackbar(it.message)
-                    binding.progressBar.visibility = View.GONE
-                }
-
-                RequestState.Loading -> {
-                    binding.rvList.visibility = View.GONE
-                    binding.progressBar.visibility = View.VISIBLE
-                }
-
-                is RequestState.Success -> {
-                    binding.rvList.visibility = View.VISIBLE
-                    binding.progressBar.visibility = View.GONE
-                    adapter.updateData(it.data)
-                }
-            }
-        }
     }
 
     private fun initRecyclerView() {
