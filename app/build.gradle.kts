@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    alias(libs.plugins.devtools.ksp)
 }
 
 android {
@@ -15,6 +16,11 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("String", "BASE_URL", "\"https://newsapi.org/v2/\"")
+
+        //TODO 4: Masukkan nilai Field Api Key dibawah ini
+        buildConfigField("String", "API_KEY", "\"410ba3e7ec4a43de9ad8afdd39de4dac\"")
     }
 
     buildTypes {
@@ -33,6 +39,11 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
+    buildFeatures{
+        viewBinding = true
+        buildConfig = true
+    }
 }
 
 dependencies {
@@ -45,4 +56,14 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    implementation(libs.bumptech.glide)
+    ksp(libs.bumptech.glide.processor)
+
+
+    //TODO 3: Implement library activity-ktx, retrofit, dan gson
+    implementation(libs.androidx.activity.ktx)
+    implementation(libs.squareup.retrofit)
+    implementation(libs.squareup.gson.converter)
+    implementation(libs.squareup.logging.interceptor)
 }

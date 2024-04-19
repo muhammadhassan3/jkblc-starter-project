@@ -1,14 +1,22 @@
 [versions]
 agp = "8.3.2"
-kotlin = "1.9.0"
+kotlin = "1.9.23"
 coreKtx = "1.12.0"
 junit = "4.13.2"
 junitVersion = "1.1.5"
 espressoCore = "3.5.1"
 appcompat = "1.6.1"
 material = "1.11.0"
-activity = "1.8.0"
+activity = "1.8.2"
 constraintlayout = "2.1.4"
+devtoolsKsp = "1.9.23-1.0.20"
+glide = "4.16.0"
+
+#TODO 1 : Mendefinisikan versi libary
+activity-ktx = "1.8.2"
+retrofit2 = "2.11.0"
+logging-interceptor="4.12.0"
+
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -19,8 +27,17 @@ androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+bumptech-glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glide" }
+bumptech-glide-processor = {group="com.github.bumptech.glide", name="ksp", version.ref="glide"}
+
+#TODO 2 : Mendefinisikan library
+androidx-activity-ktx = { group = "androidx.activity", name = "activity-ktx", version.ref = "activity-ktx" }
+squareup-retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit2" }
+squareup-gson-converter = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofit2" }
+squareup-logging-interceptor = {group="com.squareup.okhttp3", name ="logging-interceptor", version.ref="logging-interceptor"}
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
 jetbrainsKotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+devtools-ksp = {id="com.google.devtools.ksp", version.ref="devtoolsKsp"}
 

@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">jkblc-starter-project</string>
+    <string name="search_hint">Masukkan berita yang kamu cari...</string>
 </resources>
